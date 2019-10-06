@@ -94,7 +94,7 @@ class steamApis {
 	getItemsForApp(appid, compact, compactValue) {
 		return new Promise((resolve, reject) => {
 			if (!compact && compactValue)
-				return reject("You must set compact as true to use compactValue");
+				return reject(new Error("You must set compact as true to use compactValue"));
 
 			this._httpGet({
 				url: `${API_URL}/market/items/${appid}`,
