@@ -1,0 +1,16 @@
+{
+  "name": "steamapis",
+  "version": "1.0.0",
+  "description": "Unofficial community-maintained module for https://steamapis.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jfx",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
+    "steamid": "^1.1.3"
+  }
+}
