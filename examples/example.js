@@ -1,4 +1,4 @@
-const SteamApis = require('./index.js');
+const SteamApis = require('../index.js');
 
 const steamApis = new SteamApis('YOUR_STEAMAPIS_API_KEY');
 

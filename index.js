@@ -14,21 +14,13 @@ class steamApis {
 	}
 
 	_httpGet(options) {
-		return new Promise((resolve, reject) => {
-			if (!options.qs)
-				options.qs = {api_key: this.apiKey};
-			else
-				options.qs.api_key = this.apiKey;
-			
-			options.json = true;
+		if (!options.qs)
+			options.qs = {api_key: this.apiKey};
+		else
+			options.qs.api_key = this.apiKey;
+		options.json = true;
 
-			request.get(options)
-			.then((res) => {
-				return resolve(res);
-			}).catch((err) => {
-				return reject(err);
-			});
-		});
+		return request.get(options);
 	}
 
 	/**
@@ -122,15 +114,9 @@ class steamApis {
 	 * Return price details for all monitored Steam cards from the steamapis.com database. For more information: https://steamapis.com/docs/market#cards
 	 */
 	getAllCards() {
-		return new Promise((resolve, reject) => {
-			this._httpGet({
-				url: `${API_URL}/market/items/cards`,
-			}).then((res) => {
-				return resolve(res);
-			}).catch((err) => {
-				return reject(err);
-			});
-		});
+		return this._httpGet({
+			url: `${API_URL}/market/items/cards`,
+		})
 	}
 	
 }
