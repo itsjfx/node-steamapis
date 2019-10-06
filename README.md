@@ -3,7 +3,12 @@
 
 Unofficial community-maintained module for https://steamapis.com
 
+```
+npm install steamapis
+```
+
 ## How to use
+
 I'd recommend checking the examples in the examples/ folder.  
 Currently all methods return promises, and the method parameters are designed to match parameters from the calls at: https://steamapis.com/docs apart from the api_key which is automatically put into every request, and is set in the constructor for the api.
 
