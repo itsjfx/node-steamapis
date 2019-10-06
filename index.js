@@ -96,16 +96,12 @@ class steamApis {
 			if (!compact && compactValue)
 				return reject("You must set compact as true to use compactValue");
 
-			this._httpGet({
+			return this._httpGet({
 				url: `${API_URL}/market/items/${appid}`,
 				qs: {
 					format: compact ? 'compact' : undefined,
 					compact_value: compactValue
 				}
-			}).then((res) => {
-				return resolve(res);
-			}).catch((err) => {
-				return reject(err);
 			});
 		});
 	}
