@@ -4,7 +4,7 @@ const CEconItem = require('./CEconItem.js');
 
 const API_URL = 'https://api.steamapis.com';
 
-class steamApis {
+class SteamApis {
 	/**
 	 * 
 	 * @param {string} apiKey - Your steamapis.com apikey
@@ -26,9 +26,10 @@ class steamApis {
 	/**
 	 * Get the contents of a users inventory. Designed to be the same as DoctorMcKay's getUserInventoryContents from node-steamcommunity (without language support). 
 	 * @param {SteamID|string} steamid - SteamID object from node-steamid or a string which can be parsed into a SteamID object 
-	 * @param {int} appid - The Steam application ID of the game 
-	 * @param {int} contextid - The ID of the context within the game you wish to retrieve 
+	 * @param {int} appid - The Steam application ID of the app 
+	 * @param {int} contextid - The ID of the context within the app you wish to retrieve 
 	 * @param {boolean} tradableOnly - true to get only tradeable items and currencies 
+	 * @returns {Promise} Promise object containing an object with keys: inventory, currency and total_inventory_count - with inventory and currency being an array of CEconItem objects.
 	 */
 	getInventory(steamid, appid, contextid, tradableOnly) {
 		return new Promise((resolve, reject) => {
@@ -61,7 +62,7 @@ class steamApis {
 						(res.assets[item].currencyid ? currency : inventory).push(new CEconItem(res.assets[item], description, contextid));
 					}
 				}
-				return resolve(inventory, currency, res.total_inventory_count);
+				return resolve({inventory: inventory, currency: currency, total_inventory_count: res.total_inventory_count});
 			}).catch((err) => {
 				return reject(err);
 			});
@@ -86,10 +87,54 @@ class steamApis {
 	}
 
 	/**
+	 * Returns the data that displayed on the front page of steamapis.com.
+	 * @returns {Promise} Promise object with steamApis raw response
+	 */
+	getMarketStats() {
+		return this._httpGet({
+			url: `${API_URL}/market/stats`
+		});
+	}
+
+	/**
+	 * Returns detailed data about any app from the steamapis.com database. For more information: https://steamapis.com/docs/market#app
+	 * @param {int} appid - Identifier of the application
+	 * @returns {Promise} Promise object with steamApis raw response
+	 */
+	getDataForApp(appid) {
+		return this._httpGet({
+			url: `${API_URL}/market/app/${appid}`
+		});
+	}
+
+	/** 
+	 * Returns all apps from the steamapis.com database. For more information: https://steamapis.com/docs/market#apps 
+	 * @returns {Promise} Promise object with steamApis raw response
+	 */
+	getDataForAllApps() {
+		return this._httpGet({
+			url: `${API_URL}/market/apps`
+		});
+	}
+
+	/**
+	 * Returns detailed data about any item from the steamapis.com database. For more information: https://steamapis.com/docs/market#item
+	 * @param {int} appid - Identifier of the application for the item you wish to fetch
+	 * @param {string} market_hash_name - The value of the market hash name of the item you wish to fetch
+	 * @returns {Promise} Promise object with steamApis raw response
+	 */
+	getItemFromApp(appid, market_hash_name) {
+		return this._httpGet({
+			url: `${API_URL}/market/item/${appid}/${market_hash_name}`
+		});
+	}
+
+	/**
 	 * Return price details for items that belong to an appid from the steamapis.com database. For more information: https://steamapis.com/docs/market#items
-	 * @param {int} appid - Identifier of the application which item you want to fetch
+	 * @param {int} appid - Identifier of the application for the item you wish to fetch
 	 * @param {boolean} [compact] - Return only safe or the compactValue prices only 
 	 * @param {string} [compactValue] - Changes the return values for items when compact is true
+	 * @returns {Promise} Promise object with steamApis raw response
 	 */
 	getItemsForApp(appid, compact, compactValue) {
 		return new Promise((resolve, reject) => {
@@ -112,13 +157,45 @@ class steamApis {
 
 	/**
 	 * Return price details for all monitored Steam cards from the steamapis.com database. For more information: https://steamapis.com/docs/market#cards
+	 * @returns {Promise} Promise object with steamApis raw response
 	 */
 	getAllCards() {
 		return this._httpGet({
-			url: `${API_URL}/market/items/cards`,
-		})
+			url: `${API_URL}/market/items/cards`
+		});
+	}
+
+	/**
+	 * Redirects to the image of specified item if it exists on the steamapis.com database, else an error is returned. For more information: https://steamapis.com/docs/images#item
+	 * @param {int} appid - Identifier of the application for the image you wish to fetch
+	 * @param {string} market_hash_name - The value of the market hash name of the image you wish to fetch
+	 * @returns {Promise} Promise object with steamApis raw response
+	 */
+	getImageRedirectForItem(appid, market_hash_name) {
+		return this._httpGet({
+			url: `${API_URL}/image/item/${appid}/${market_hash_name}`
+		});
+	}
+
+	/**
+	 * Returns all item images on the steamapis.com database that belong to the specified application. For more information: https://steamapis.com/docs/images#items
+	 * @param {int} appid - Identifier of the application for the images you wish to fetch
+	 * @returns {Promise} Promise object with steamApis raw response
+	 */
+	getAllImagesForApp(appid) {
+		return new Promise((resolve, reject) => {
+			this._httpGet({
+				url: `${API_URL}/image/items/${appid}`
+			}).then((res) => {
+				if (!res || Object.keys(res).length == 0)
+					return reject(new Error("Invalid response from steamapis.com. Please check your input."));
+				return resolve(res);
+			}).catch((err) => {
+				return reject(err);
+			});
+		});
 	}
 	
 }
 
-module.exports = steamApis;
+module.exports = SteamApis;
