@@ -88,7 +88,7 @@ class SteamApis {
 
 	/**
 	 * Returns the data that displayed on the front page of steamapis.com.
-	 * @returns {Promise} Promise object with steamApis raw response
+	 * @returns {Promise} Promise object with steamapis raw response
 	 */
 	getMarketStats() {
 		return this._httpGet({
@@ -99,7 +99,7 @@ class SteamApis {
 	/**
 	 * Returns detailed data about any app from the steamapis.com database. For more information: https://steamapis.com/docs/market#app
 	 * @param {int} appid - Identifier of the application
-	 * @returns {Promise} Promise object with steamApis raw response
+	 * @returns {Promise} Promise object with steamapis raw response
 	 */
 	getDataForApp(appid) {
 		return this._httpGet({
@@ -109,7 +109,7 @@ class SteamApis {
 
 	/** 
 	 * Returns all apps from the steamapis.com database. For more information: https://steamapis.com/docs/market#apps 
-	 * @returns {Promise} Promise object with steamApis raw response
+	 * @returns {Promise} Promise object with steamapis raw response
 	 */
 	getDataForAllApps() {
 		return this._httpGet({
@@ -121,7 +121,7 @@ class SteamApis {
 	 * Returns detailed data about any item from the steamapis.com database. For more information: https://steamapis.com/docs/market#item
 	 * @param {int} appid - Identifier of the application for the item you wish to fetch
 	 * @param {string} market_hash_name - The value of the market hash name of the item you wish to fetch
-	 * @returns {Promise} Promise object with steamApis raw response
+	 * @returns {Promise} Promise object with steamapis raw response
 	 */
 	getItemFromApp(appid, market_hash_name) {
 		return this._httpGet({
@@ -134,7 +134,7 @@ class SteamApis {
 	 * @param {int} appid - Identifier of the application for the item you wish to fetch
 	 * @param {boolean} [compact] - Return only safe or the compactValue prices only 
 	 * @param {string} [compactValue] - Changes the return values for items when compact is true
-	 * @returns {Promise} Promise object with steamApis raw response
+	 * @returns {Promise} Promise object with steamapis raw response
 	 */
 	getItemsForApp(appid, compact, compactValue) {
 		return new Promise((resolve, reject) => {
@@ -157,7 +157,7 @@ class SteamApis {
 
 	/**
 	 * Return price details for all monitored Steam cards from the steamapis.com database. For more information: https://steamapis.com/docs/market#cards
-	 * @returns {Promise} Promise object with steamApis raw response
+	 * @returns {Promise} Promise object with steamapis raw response
 	 */
 	getAllCards() {
 		return this._httpGet({
@@ -169,7 +169,7 @@ class SteamApis {
 	 * Redirects to the image of specified item if it exists on the steamapis.com database, else an error is returned. For more information: https://steamapis.com/docs/images#item
 	 * @param {int} appid - Identifier of the application for the image you wish to fetch
 	 * @param {string} market_hash_name - The value of the market hash name of the image you wish to fetch
-	 * @returns {Promise} Promise object with steamApis raw response
+	 * @returns {Promise} Promise object with steamapis raw response
 	 */
 	getImageRedirectForItem(appid, market_hash_name) {
 		return this._httpGet({
@@ -180,7 +180,7 @@ class SteamApis {
 	/**
 	 * Returns all item images on the steamapis.com database that belong to the specified application. For more information: https://steamapis.com/docs/images#items
 	 * @param {int} appid - Identifier of the application for the images you wish to fetch
-	 * @returns {Promise} Promise object with steamApis raw response
+	 * @returns {Promise} Promise object with steamapis raw response
 	 */
 	getAllImagesForApp(appid) {
 		return new Promise((resolve, reject) => {
@@ -195,7 +195,6 @@ class SteamApis {
 			});
 		});
 	}
-	
 }
 
 module.exports = SteamApis;

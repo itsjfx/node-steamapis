@@ -44,14 +44,14 @@ Get the contents of a users inventory. Designed to be the same as DoctorMcKay's 
 Returns the data that displayed on the front page of steamapis.com.
 
 **Kind**: instance method of [<code>SteamApis</code>](#SteamApis)  
-**Returns**: <code>Promise</code> - Promise object with steamApis raw response  
+**Returns**: <code>Promise</code> - Promise object with steamapis raw response  
 <a name="SteamApis+getDataForApp"></a>
 
 ### steamApis.getDataForApp(appid) ⇒ <code>Promise</code>
 Returns detailed data about any app from the steamapis.com database. For more information: https://steamapis.com/docs/market#app
 
 **Kind**: instance method of [<code>SteamApis</code>](#SteamApis)  
-**Returns**: <code>Promise</code> - Promise object with steamApis raw response  
+**Returns**: <code>Promise</code> - Promise object with steamapis raw response  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -63,14 +63,14 @@ Returns detailed data about any app from the steamapis.com database. For more in
 Returns all apps from the steamapis.com database. For more information: https://steamapis.com/docs/market#apps
 
 **Kind**: instance method of [<code>SteamApis</code>](#SteamApis)  
-**Returns**: <code>Promise</code> - Promise object with steamApis raw response  
+**Returns**: <code>Promise</code> - Promise object with steamapis raw response  
 <a name="SteamApis+getItemFromApp"></a>
 
 ### steamApis.getItemFromApp(appid, market_hash_name) ⇒ <code>Promise</code>
 Returns detailed data about any item from the steamapis.com database. For more information: https://steamapis.com/docs/market#item
 
 **Kind**: instance method of [<code>SteamApis</code>](#SteamApis)  
-**Returns**: <code>Promise</code> - Promise object with steamApis raw response  
+**Returns**: <code>Promise</code> - Promise object with steamapis raw response  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -83,7 +83,7 @@ Returns detailed data about any item from the steamapis.com database. For more i
 Return price details for items that belong to an appid from the steamapis.com database. For more information: https://steamapis.com/docs/market#items
 
 **Kind**: instance method of [<code>SteamApis</code>](#SteamApis)  
-**Returns**: <code>Promise</code> - Promise object with steamApis raw response  
+**Returns**: <code>Promise</code> - Promise object with steamapis raw response  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -97,14 +97,14 @@ Return price details for items that belong to an appid from the steamapis.com da
 Return price details for all monitored Steam cards from the steamapis.com database. For more information: https://steamapis.com/docs/market#cards
 
 **Kind**: instance method of [<code>SteamApis</code>](#SteamApis)  
-**Returns**: <code>Promise</code> - Promise object with steamApis raw response  
+**Returns**: <code>Promise</code> - Promise object with steamapis raw response  
 <a name="SteamApis+getImageRedirectForItem"></a>
 
 ### steamApis.getImageRedirectForItem(appid, market_hash_name) ⇒ <code>Promise</code>
 Redirects to the image of specified item if it exists on the steamapis.com database, else an error is returned. For more information: https://steamapis.com/docs/images#item
 
 **Kind**: instance method of [<code>SteamApis</code>](#SteamApis)  
-**Returns**: <code>Promise</code> - Promise object with steamApis raw response  
+**Returns**: <code>Promise</code> - Promise object with steamapis raw response  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -117,7 +117,7 @@ Redirects to the image of specified item if it exists on the steamapis.com datab
 Returns all item images on the steamapis.com database that belong to the specified application. For more information: https://steamapis.com/docs/images#items
 
 **Kind**: instance method of [<code>SteamApis</code>](#SteamApis)  
-**Returns**: <code>Promise</code> - Promise object with steamApis raw response  
+**Returns**: <code>Promise</code> - Promise object with steamapis raw response  
 
 | Param | Type | Description |
 | --- | --- | --- |
