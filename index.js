@@ -87,6 +87,33 @@ class SteamApis {
 	}
 
 	/**
+	 * Fetches Steam's profile endpoint and returns detailed information about the user and its inventory contexts. For more information: https://steamapis.com/docs/steam#profile
+	 * @param {SteamID|string} steamid - SteamID object from node-steamid or a string which can be parsed into a SteamID object 
+	 * @returns {Promise} Promise object with steamapis raw response
+	 */
+	getProfileData(steamid) {
+		return new Promise((resolve, reject) => {
+			if (!steamid)
+				return reject(new Error("The user's SteamID is invalid or missing."));
+
+			if (typeof steamid === 'string') {
+				steamid = new SteamID(steamid);
+			}
+
+			if (!steamid.isValid())
+				return reject(new Error("The user's SteamID is invalid."));
+
+			this._httpGet({
+				url: `${API_URL}/steam/profile/${steamid}`
+			}).then((res) => {
+				return resolve(res);
+			}).catch((err) => {
+				return reject(err);
+			});
+		});
+	}
+
+	/**
 	 * Returns the data that displayed on the front page of steamapis.com.
 	 * @returns {Promise} Promise object with steamapis raw response
 	 */

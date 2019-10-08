@@ -6,6 +6,7 @@
 * [SteamApis](#SteamApis)
     * [new SteamApis(apiKey)](#new_SteamApis_new)
     * [.getInventory(steamid, appid, contextid, tradableOnly)](#SteamApis+getInventory) ⇒ <code>Promise</code>
+    * [.getProfileData(steamid)](#SteamApis+getProfileData) ⇒ <code>Promise</code>
     * [.getMarketStats()](#SteamApis+getMarketStats) ⇒ <code>Promise</code>
     * [.getDataForApp(appid)](#SteamApis+getDataForApp) ⇒ <code>Promise</code>
     * [.getDataForAllApps()](#SteamApis+getDataForAllApps) ⇒ <code>Promise</code>
@@ -37,6 +38,18 @@ Get the contents of a users inventory. Designed to be the same as DoctorMcKay's 
 | appid | <code>int</code> | The Steam application ID of the app |
 | contextid | <code>int</code> | The ID of the context within the app you wish to retrieve |
 | tradableOnly | <code>boolean</code> | true to get only tradeable items and currencies |
+
+<a name="SteamApis+getProfileData"></a>
+
+### steamApis.getProfileData(steamid) ⇒ <code>Promise</code>
+Fetches Steam's profile endpoint and returns detailed information about the user and its inventory contexts. For more information: https://steamapis.com/docs/steam#profile
+
+**Kind**: instance method of [<code>SteamApis</code>](#SteamApis)  
+**Returns**: <code>Promise</code> - Promise object with steamapis raw response  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| steamid | <code>SteamID</code> \| <code>string</code> | SteamID object from node-steamid or a string which can be parsed into a SteamID object |
 
 <a name="SteamApis+getMarketStats"></a>
 
