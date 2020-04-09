@@ -1,6 +1,6 @@
 {
   "name": "steamapis",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Unofficial community-maintained module for https://steamapis.com",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,8 @@
     "url": "https://github.com/itsjfx/node-steamapis/issues"
   },
   "repository": {
-	"type" : "git",
-	"url" : "https://github.com/itsjfx/node-steamapis.git"
+    "type": "git",
+    "url": "https://github.com/itsjfx/node-steamapis.git"
   },
   "author": "jfx",
   "license": "MIT",

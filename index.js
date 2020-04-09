@@ -9,16 +9,21 @@ class SteamApis {
 	 * 
 	 * @param {string} apiKey - Your steamapis.com apikey
 	 */
-	constructor(apiKey) {
+	constructor(apiKey, options) {
 		this.apiKey = apiKey;
+		if (!options)
+			options = {};
+		this.requestOptions = options.requestOptions || {};
 	}
 
 	_httpGet(options) {
+		options = Object.assign({}, this.requestOptions, options);
 		if (!options.qs)
 			options.qs = {api_key: this.apiKey};
 		else
 			options.qs.api_key = this.apiKey;
 		options.json = true;
+		console.log(options);
 
 		return request.get(options);
 	}
