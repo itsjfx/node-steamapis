@@ -23,7 +23,6 @@ class SteamApis {
 		else
 			options.qs.api_key = this.apiKey;
 		options.json = true;
-		console.log(options);
 
 		return request.get(options);
 	}

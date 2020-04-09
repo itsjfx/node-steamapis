@@ -1,6 +1,6 @@
 {
   "name": "steamapis",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Unofficial community-maintained module for https://steamapis.com",
   "main": "index.js",
   "scripts": {
