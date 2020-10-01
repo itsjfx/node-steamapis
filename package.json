@@ -2,9 +2,9 @@
   "name": "steamapis",
   "version": "1.0.11",
   "description": "Unofficial community-maintained module for https://steamapis.com",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "doc": "jsdoc2md -f lib/index.js > doc.md"
   },
   "homepage": "https://github.com/itsjfx/node-steamapis#readme",
   "bugs": {
@@ -18,10 +18,11 @@
   "license": "MIT",
   "dependencies": {
     "request": "^2.88.0",
-    "request-promise-native": "^1.0.7",
+    "request-promise-native": "^1.0.9",
+    "steam-inventory-api-ng": "^1.0.10",
     "steamid": "^1.1.3"
   },
   "devDependencies": {
-    "jsdoc-to-markdown": "^5.0.1"
+    "jsdoc-to-markdown": "^6.0.1"
   }
 }
